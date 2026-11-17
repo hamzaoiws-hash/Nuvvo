@@ -1,0 +1,11 @@
+:root{color-scheme:dark light;--bg:#0a0a09;--fg:#f6f2e4;--muted:#a29e8d;--acc:#ffd60a}
+@media (prefers-color-scheme:light){:root{--bg:#faf8f1;--fg:#1b1a15;--muted:#6b675b;--acc:#8a6a00}}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.8 "IBM Plex Sans Arabic",system-ui,sans-serif;padding:24px 16px}
+main{max-width:720px;margin:0 auto}
+h1{font-size:1.8rem;margin:.6em 0 .2em}
+h2{font-size:1.15rem;margin:1.6em 0 .3em;color:var(--acc)}
+.meta{color:var(--muted);margin:0 0 1em}
+ul{padding-inline-start:1.2em;margin:.3em 0}
+li{margin:.3em 0}
+a{color:var(--acc)}
+.back{display:inline-block;margin-bottom:.6em}

@@ -1,0 +1,563 @@
+[
+ {
+  "name": "status on",
+  "body": {
+   "mode": "status"
+  }
+ },
+ {
+  "name": "bad mode",
+  "body": {
+   "mode": "nope"
+  }
+ },
+ {
+  "name": "chat ok",
+  "body": {
+   "mode": "chat",
+   "lang": "en",
+   "messages": [
+    {
+     "role": "user",
+     "text": "hello"
+    }
+   ]
+  },
+  "gemini": {
+   "candidates": [
+    {
+     "content": {
+      "parts": [
+       {
+        "text": "**Hi**"
+       }
+      ]
+     }
+    }
+   ]
+  }
+ },
+ {
+  "name": "chat last not user",
+  "body": {
+   "mode": "chat",
+   "messages": [
+    {
+     "role": "ai",
+     "text": "x"
+    }
+   ]
+  }
+ },
+ {
+  "name": "chat empty",
+  "body": {
+   "mode": "chat",
+   "messages": []
+  }
+ },
+ {
+  "name": "cards ok",
+  "body": {
+   "mode": "cards",
+   "text": "photosynthesis",
+   "n": 3
+  },
+  "gemini": {
+   "candidates": [
+    {
+     "content": {
+      "parts": [
+       {
+        "text": "{\"cards\":[{\"q\":\"a\",\"a\":\"b\"},{\"q\":\"\",\"a\":\"x\"},{\"q\":\"c\",\"a\":\"d\"},{\"q\":\"e\",\"a\":\"f\"},{\"q\":\"g\",\"a\":\"h\"}]}"
+       }
+      ]
+     }
+    }
+   ]
+  }
+ },
+ {
+  "name": "cards short text",
+  "body": {
+   "mode": "cards",
+   "text": "ab"
+  }
+ },
+ {
+  "name": "quiz ok",
+  "body": {
+   "mode": "quiz",
+   "text": "cells",
+   "n": 9
+  },
+  "gemini": {
+   "candidates": [
+    {
+     "content": {
+      "parts": [
+       {
+        "text": "{\"questions\":[{\"q\":\"q1\",\"options\":[\"a\",\"b\",\"c\",\"d\"],\"answer\":2,\"why\":\"w\"},{\"q\":\"bad\",\"options\":[\"a\",\"b\"],\"answer\":0,\"why\":\"w\"},{\"q\":\"q3\",\"options\":[\"a\",\"b\",\"c\",\"d\"],\"answer\":7,\"why\":\"w\"}]}"
+       }
+      ]
+     }
+    }
+   ]
+  }
+ },
+ {
+  "name": "simplify",
+  "body": {
+   "mode": "simplify",
+   "text": "long text here",
+   "style": "summary"
+  },
+  "gemini": {
+   "candidates": [
+    {
+     "content": {
+      "parts": [
+       {
+        "text": "- one"
+       }
+      ]
+     }
+    }
+   ]
+  }
+ },
+ {
+  "name": "moderate as non-mod",
+  "body": {
+   "mode": "moderate",
+   "text": "hi"
+  },
+  "isMod": false
+ },
+ {
+  "name": "moderate as mod",
+  "body": {
+   "mode": "moderate",
+   "text": "hi"
+  },
+  "isMod": true,
+  "gemini": {
+   "candidates": [
+    {
+     "content": {
+      "parts": [
+       {
+        "text": "{\"verdict\":\"weird\",\"category\":\"spam\",\"reason\":\"r\"}"
+       }
+      ]
+     }
+    }
+   ]
+  }
+ },
+ {
+  "name": "limit reached",
+  "body": {
+   "mode": "chat",
+   "messages": [
+    {
+     "role": "user",
+     "text": "hi"
+    }
+   ]
+  },
+  "quota": false
+ },
+ {
+  "name": "blocked",
+  "body": {
+   "mode": "chat",
+   "messages": [
+    {
+     "role": "user",
+     "text": "hi"
+    }
+   ]
+  },
+  "gemini": {
+   "promptFeedback": {
+    "blockReason": "SAFETY"
+   }
+  }
+ },
+ {
+  "name": "gemini 429",
+  "body": {
+   "mode": "chat",
+   "messages": [
+    {
+     "role": "user",
+     "text": "hi"
+    }
+   ]
+  },
+  "geminiStatus": 429,
+  "gemini": {}
+ },
+ {
+  "name": "gemini 500",
+  "body": {
+   "mode": "chat",
+   "messages": [
+    {
+     "role": "user",
+     "text": "hi"
+    }
+   ]
+  },
+  "geminiStatus": 500,
+  "gemini": {}
+ },
+ {
+  "name": "bad json from gemini",
+  "body": {
+   "mode": "cards",
+   "text": "abc def"
+  },
+  "gemini": {
+   "candidates": [
+    {
+     "content": {
+      "parts": [
+       {
+        "text": "not json"
+       }
+      ]
+     }
+    }
+   ]
+  }
+ },
+ {
+  "name": "not logged in",
+  "body": {
+   "mode": "chat",
+   "messages": [
+    {
+     "role": "user",
+     "text": "hi"
+    }
+   ]
+  },
+  "userOk": false
+ },
+ {
+  "name": "chat with photo",
+  "body": {
+   "mode": "chat",
+   "messages": [
+    {
+     "role": "user",
+     "text": "حل ده"
+    }
+   ],
+   "files": [
+    {
+     "mime": "image/jpeg",
+     "data": "/9j/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    }
+   ]
+  },
+  "gemini": {
+   "candidates": [
+    {
+     "content": {
+      "parts": [
+       {
+        "text": "رد"
+       }
+      ]
+     }
+    }
+   ]
+  }
+ },
+ {
+  "name": "bad mime",
+  "body": {
+   "mode": "chat",
+   "messages": [
+    {
+     "role": "user",
+     "text": "x"
+    }
+   ],
+   "files": [
+    {
+     "mime": "image/gif",
+     "data": "/9j/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    }
+   ]
+  }
+ },
+ {
+  "name": "mismatch",
+  "body": {
+   "mode": "chat",
+   "messages": [
+    {
+     "role": "user",
+     "text": "x"
+    }
+   ],
+   "files": [
+    {
+     "mime": "image/png",
+     "data": "/9j/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    }
+   ]
+  }
+ },
+ {
+  "name": "4 files",
+  "body": {
+   "mode": "chat",
+   "messages": [
+    {
+     "role": "user",
+     "text": "x"
+    }
+   ],
+   "files": [
+    {
+     "mime": "image/jpeg",
+     "data": "/9j/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    {
+     "mime": "image/jpeg",
+     "data": "/9j/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    {
+     "mime": "image/jpeg",
+     "data": "/9j/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    {
+     "mime": "image/jpeg",
+     "data": "/9j/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    }
+   ]
+  }
+ },
+ {
+  "name": "two pdfs",
+  "body": {
+   "mode": "chat",
+   "messages": [
+    {
+     "role": "user",
+     "text": "x"
+    }
+   ],
+   "files": [
+    {
+     "mime": "application/pdf",
+     "data": "JVBERAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    {
+     "mime": "application/pdf",
+     "data": "JVBERAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    }
+   ]
+  }
+ },
+ {
+  "name": "files not list",
+  "body": {
+   "mode": "chat",
+   "messages": [
+    {
+     "role": "user",
+     "text": "x"
+    }
+   ],
+   "files": {
+    "mime": "image/jpeg",
+    "data": "/9j/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+   }
+  }
+ },
+ {
+  "name": "cards from photo only",
+  "body": {
+   "mode": "cards",
+   "text": "",
+   "files": [
+    {
+     "mime": "image/png",
+     "data": "iVBORAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    }
+   ]
+  },
+  "gemini": {
+   "candidates": [
+    {
+     "content": {
+      "parts": [
+       {
+        "text": "{\"cards\":[{\"q\":\"s\",\"a\":\"j\"}]}"
+       }
+      ]
+     }
+    }
+   ]
+  }
+ },
+ {
+  "name": "cards no text no file",
+  "body": {
+   "mode": "cards",
+   "text": ""
+  }
+ },
+ {
+  "name": "moderate ignores files",
+  "body": {
+   "mode": "moderate",
+   "text": "hi",
+   "files": [
+    {
+     "mime": "image/gif",
+     "data": "zz"
+    }
+   ]
+  },
+  "isMod": true,
+  "gemini": {
+   "candidates": [
+    {
+     "content": {
+      "parts": [
+       {
+        "text": "{\"verdict\":\"ok\",\"category\":\"none\",\"reason\":\"r\"}"
+       }
+      ]
+     }
+    }
+   ]
+  }
+ },
+ {
+  "name": "plan question",
+  "body": {
+   "mode": "plan",
+   "today": "2026-11-16",
+   "messages": [
+    {
+     "role": "user",
+     "text": "عايز جدول"
+    }
+   ]
+  },
+  "gemini": {
+   "candidates": [
+    {
+     "content": {
+      "parts": [
+       {
+        "text": "{\"done\":false,\"reply\":\"المواد؟\"}"
+       }
+      ]
+     }
+    }
+   ]
+  }
+ },
+ {
+  "name": "plan done",
+  "body": {
+   "mode": "plan",
+   "messages": [
+    {
+     "role": "user",
+     "text": "اعمله"
+    }
+   ],
+   "files": [
+    {
+     "mime": "application/pdf",
+     "data": "JVBERAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    }
+   ]
+  },
+  "gemini": {
+   "candidates": [
+    {
+     "content": {
+      "parts": [
+       {
+        "text": "{\"done\": true, \"reply\": \"\\u062c\\u0627\\u0647\\u0632\", \"schedule\": {\"title\": \"t\", \"days\": [{\"day\": \"\\u0627\\u0644\\u0633\\u0628\\u062a\", \"items\": [{\"time\": \"16:00\", \"subject\": \"\\u0641\\u064a\\u0632\\u064a\\u0627\\u0621\", \"task\": \"\\u062d\\u0644\"}, {\"time\": \"\", \"subject\": \"\", \"task\": \"x\"}]}, {\"day\": \"\", \"items\": [{\"time\": \"1\", \"subject\": \"a\", \"task\": \"b\"}]}, {\"day\": \"\\u0627\\u0644\\u0623\\u062d\\u062f\", \"items\": []}]}}"
+       }
+      ]
+     }
+    }
+   ]
+  }
+ },
+ {
+  "name": "plan done empty days",
+  "body": {
+   "mode": "plan",
+   "messages": [
+    {
+     "role": "user",
+     "text": "x"
+    }
+   ]
+  },
+  "gemini": {
+   "candidates": [
+    {
+     "content": {
+      "parts": [
+       {
+        "text": "{\"done\":true,\"reply\":\"ok\",\"schedule\":{\"title\":\"t\",\"days\":[]}}"
+       }
+      ]
+     }
+    }
+   ]
+  }
+ },
+ {
+  "name": "plan nothing usable",
+  "body": {
+   "mode": "plan",
+   "messages": [
+    {
+     "role": "user",
+     "text": "x"
+    }
+   ]
+  },
+  "gemini": {
+   "candidates": [
+    {
+     "content": {
+      "parts": [
+       {
+        "text": "{\"done\":true,\"reply\":\"\",\"schedule\":{\"title\":\"t\",\"days\":[]}}"
+       }
+      ]
+     }
+    }
+   ]
+  }
+ },
+ {
+  "name": "plan last not user",
+  "body": {
+   "mode": "plan",
+   "messages": [
+    {
+     "role": "ai",
+     "text": "x"
+    }
+   ]
+  }
+ }
+]
